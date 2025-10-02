@@ -1,21 +1,16 @@
 'use client';
 
-import NewTask from "../Components/NewTask/NewTask";
+import { useState } from "react";
+import NewTaskDialog from "../Components/NewTaskDialog/NewTaskDialog";
+import Task from "../Components/Task/Task";
 
 export default function Dashboard() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   function handleCreateTask() {
     // Logic to handle task creation
     console.log("Create Task button clicked");
     // You can navigate to a task creation page or open a modal here
-    let createTaskButton = document.getElementById("createTaskButton");
-    if (createTaskButton) {
-      createTaskButton.style.backgroundColor = "#ff69b4"; // Change to a lighter pink on click
-      setTimeout(() => {
-        createTaskButton!.style.backgroundColor = "#ec4899"; // Revert back after 200ms
-      }, 200);
-    }
-
-    let isFormAvailable = true;
+    setIsDialogOpen(true);
   }
 
   return (
@@ -25,6 +20,7 @@ export default function Dashboard() {
         Welcome to your dashboard! Here you can manage your tasks and track your
         productivity.
       </p>
+      <Task task={null} />
       <button
         onClick={handleCreateTask}
         id="createTaskButton"
@@ -32,7 +28,9 @@ export default function Dashboard() {
       >
         Create New Task
       </button>
-      <div>{/* Add dashboard components and features here */}</div>
+      <div>{/* Add dashboard components and features here */}
+      </div>
+      {isDialogOpen && <NewTaskDialog onClose={() => setIsDialogOpen(false)} />}
     </main>
   );
 }

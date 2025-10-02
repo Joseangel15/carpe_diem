@@ -1,4 +1,13 @@
+'use client';
+
 export default function Home() {
+  function handleDashboardNavigation() {
+    // Logic to navigate to the dashboard
+    console.log("Dashboard button clicked");
+    // You can use a router to navigate to the dashboard page here
+    window.location.href = "/dashboard";
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <h1 className="text-6xl font-bold text-center">
@@ -7,7 +16,7 @@ export default function Home() {
           Seize the Day
         </span>
       </h1>
-      <button className="mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded cursor-pointer">
+      <button onClick={handleDashboardNavigation} type="button" className="mt-4 bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded cursor-pointer">
         Dashboard
       </button>
       <p className="mt-4">
