@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
+import SupabaseProvider from "./Components/SupabaseProvider/SupabaseProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <SupabaseProvider>
+          <Header />
+          {children}
+        </SupabaseProvider>
         <Footer />
         <div id="modal-root"></div>
       </body>

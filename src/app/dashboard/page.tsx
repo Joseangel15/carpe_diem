@@ -6,6 +6,8 @@ import Task from "../Components/Task/Task";
 
 export default function Dashboard() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+
   function handleCreateTask() {
     // Logic to handle task creation
     console.log("Create Task button clicked");
@@ -30,7 +32,9 @@ export default function Dashboard() {
       </button>
       <div>{/* Add dashboard components and features here */}
       </div>
-      {isDialogOpen && <NewTaskDialog onClose={() => setIsDialogOpen(false)} />}
+      {isDialogOpen && <NewTaskDialog onClose={() => setIsDialogOpen(false)} onTaskCreated={function (): void {
+        throw new Error("Function not implemented.");
+      } } />}
     </main>
   );
 }
