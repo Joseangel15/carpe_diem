@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NewTaskDialog from "../Components/NewTaskDialog/NewTaskDialog";
 import Task from "../Components/Task/Task";
 
@@ -14,6 +14,10 @@ export default function Dashboard() {
     // You can navigate to a task creation page or open a modal here
     setIsDialogOpen(true);
   }
+
+  useEffect(() => {
+    // Any side effects or data fetching can be handled here
+  }, [isDialogOpen]);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -32,9 +36,9 @@ export default function Dashboard() {
       </button>
       <div>{/* Add dashboard components and features here */}
       </div>
-      {isDialogOpen && <NewTaskDialog onClose={() => setIsDialogOpen(false)} onTaskCreated={function (): void {
-        throw new Error("Function not implemented.");
-      } } />}
+      {isDialogOpen && <NewTaskDialog onClose={() => setIsDialogOpen(false)} onTaskCreated={() => {
+        setIsDialogOpen(false);
+      }} />}
     </main>
   );
 }

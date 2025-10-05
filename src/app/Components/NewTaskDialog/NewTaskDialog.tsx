@@ -72,15 +72,13 @@ export default function NewTaskDialog({
       console.log("New Task created:", formData);
       console.log("Task successfully created");
       onTaskCreated(); // Notify parent component that a new task was created
-      closeModal();
-
+      // closeModal();
     } catch (err: any) {
-      console.error('Supabase Insert error:', error);
-      setError(err.message || "Failed to save task. Please try again.");
+      // console.error("Supabase Insert error:", error);
+      // setError(err.message || "Failed to save task. Please try again.");
     } finally {
       setIsLoading(false);
     }
-
   }
 
   useEffect(() => {
